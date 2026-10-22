@@ -1,159 +1,92 @@
+<p align="center"><img src="images/hero.svg" alt="aizen" width="720"></p>
 
+# aizen: samples
 
-<p align="center">
-  <img src="images/banner.png" alt="Aizen Samples - Harbor task samples for feature-development coding" width="880">
-</p>
+<p align="center"><b>The samples lane: 0 of 30 Harbor task bundles.</b></p>
 
-<p align="center">
-  <strong>Sample Harbor task surface for studying execution-verified feature-development coding environments.</strong>
-</p>
+<p align="center"><a href="#summary"><img src="https://img.shields.io/badge/bundles-0_of_30-845EF7" alt="bundles: 0 of 30"></a> <a href="#evidence-status"><img src="https://img.shields.io/badge/sealed-0-845EF7" alt="sealed: 0"></a> <a href="#difficulty-tiers"><img src="https://img.shields.io/badge/difficulty-measured-845EF7" alt="difficulty: measured"></a></p>
 
-<p align="center">
-  <a href="#summary"><img alt="Built by Ethara.AI" src="https://img.shields.io/badge/built%20by-Ethara.AI-ee00ee.svg"></a>
-  <a href="#sample-purpose"><img alt="Purpose: task inspection" src="https://img.shields.io/badge/purpose-task_inspection-35d0ba.svg"></a>
-  <a href="#task-format"><img alt="Format: Harbor" src="https://img.shields.io/badge/format-Harbor-105864.svg"></a>
-  <a href="#verification-contract"><img alt="Verifier: executable tests" src="https://img.shields.io/badge/verifier-executable_tests-3776AB.svg"></a>
-</p>
+<p align="center"><sub><a href="#abstract">Abstract</a> | <a href="#summary">Summary</a> | <a href="#difficulty-tiers">Difficulty tiers</a> | <a href="#evidence-status">Evidence status</a> | <a href="#coverage">Coverage</a> | <a href="#dataset-structure">Dataset structure</a> | <a href="#verification-and-quality-assurance">Verification and quality assurance</a> | <a href="#reproduction">Reproduction</a> | <a href="#cite">Cite</a> | <a href="#license">License</a> | <a href="#contact">Contact</a></sub></p>
 
-<p align="center"><sub>
-  <a href="#summary">Summary</a> &middot; <a href="#sample-purpose">Purpose</a> &middot; <a href="#task-format">Format</a> &middot; <a href="#verification-contract">Verification</a> &middot; <a href="#repository-layout">Layout</a> &middot; <a href="#reproduction">Reproduction</a>
-</sub></p>
+## Abstract
 
-# Aizen Samples
+The curated lane of this corpus: at most 30 Harbor task bundles, every anchor seated first and every other bundle in seal order. Bundles past that ceiling live in `delivery/`.
 
-**Aizen Samples is the inspection and demonstration surface for Aizen's feature-development coding
-tasks.** It is meant to show how Aizen task bundles are structured, how the agent-facing prompt is
-separated from verifier-only assets, and how `FAIL_TO_PASS` / `PASS_TO_PASS` checks define the
-reward contract.
-
-The sample repository follows the same conceptual task format as Aizen's production task surface:
-containerized repository environments, explicit feature requirements, callable interface contracts,
-and hidden executable verifiers.
+Each bundle is one Harbor task in a directory named by its content-derived uuid5, so the name doubles as an integrity check. This page is rendered from the resident bundles on every reconcile; a value a bundle does not carry reads `absent`, and the page never fills one in.
 
 ## Summary
 
-| Property | Description |
-| :--- | :--- |
-| Project | Aizen Samples |
-| Organization | Ethara.AI |
-| Parent project | Aizen |
-| Domain | Agentic coding for feature-level software development |
-| Task type | Code generation inside repository context |
-| Language scope | Python, Go, Rust, JavaScript, and TypeScript |
-| Format | Harbor task bundle |
-| Verifier | Executable tests over target and preservation behavior |
-| Intended use | Task inspection, harness integration, and reproduction workflow examples |
+| Property | Value |
+| --- | --- |
+| Bundles | 0 of 30 |
+| Sealed | 0 of 0 |
+| Registrations | none |
+| Audit verdicts | none |
+| Harbor schema | none |
 
-## Sample Purpose
+## Difficulty tiers
 
-The samples repository is designed to make the Aizen task contract easy to inspect:
+Difficulty is measured by the signed pilot alone and never declared in a bundle, so this page states no tier a bundle claims.
 
-- What the agent sees in `instruction.md`.
-- How the repository environment is built.
-- Which metadata belongs in `task.toml`.
-- How target tests and preservation tests are represented.
-- How verifier-only assets are separated from the agent-visible workspace.
-- How a Harbor-compatible harness can run and grade a task.
+## Evidence status
 
-The goal is clarity for researchers and integration partners: a reader should be able to understand
-the task lifecycle without needing private project context.
+The verdict is the audit outcome recorded at the sealed digest, and `none` means no verdict has landed for that digest yet. Only an authoring run removes a bundle from this lane, so removal waits for the next one.
 
-Aizen's broader task scope covers multi-language software engineering surfaces, including Python,
-Go, Rust, JavaScript, and TypeScript repositories.
+## Coverage
 
-## Task Format
+No resident bundle declares a keyword.
 
-Each sample task uses the Harbor bundle shape:
+## Dataset structure
 
-```text
-dataset/<task-id>/
-|-- task.toml                  # task metadata and runtime contract
-|-- instruction.md             # prompt presented to the agent
-|-- environment/               # containerized repository environment
-|   |-- Dockerfile
-|   `-- ...
-|-- solution/                  # reference patch and oracle helper, verifier-side only
-|   |-- fix.patch
-|   `-- solve.sh
-`-- tests/                     # executable verifier
-    |-- test.sh
-    `-- ...
+No bundle is resident under `samples/`.
+
+```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#131a33","primaryTextColor":"#e8ecff","primaryBorderColor":"#845EF7","lineColor":"#22d3ee","fontFamily":"monospace"}}}%%
+flowchart LR
+    staging["staging/"]
+    staging --> samples["samples/<br/>0 of 30"]
+    samples --> delivery["delivery/<br/>0 of 10000"]
+    delivery --> stock["stock/<br/>0 of 10000"]
 ```
 
-The task statement should specify the feature behavior and callable interface clearly enough for an
-agent to implement it without seeing the hidden verifier.
+## Verification and quality assurance
 
-## Verification Contract
-
-Aizen sample tasks are centered on two test families:
-
-| Check family | Role |
-| :--- | :--- |
-| `FAIL_TO_PASS` | Tests that define the missing feature and should become passing after implementation. |
-| `PASS_TO_PASS` | Tests that protect existing behavior and should remain passing throughout the task. |
-
-A valid sample demonstrates the full transition: the base state preserves non-target behavior while
-the target feature fails, and the reference patch makes the verifier pass.
-
-## Metadata Fields
-
-Task metadata should make provenance and execution requirements explicit:
-
-| Field | Meaning |
-| :--- | :--- |
-| `instance_id` | Stable task id |
-| `repo` | Source repository |
-| `base_commit` | Starting commit |
-| `problem_statement` | Agent-facing task statement |
-| `FAIL_TO_PASS` | Target tests |
-| `PASS_TO_PASS` | Preservation tests |
-| `difficulty_level` | `L1` or `L2` task mode |
-| `interface_spec` | Callable interface contract |
-| `image_name` | Container image or environment id |
-| `repo_settings` | Repository-specific setup metadata |
-
-## Repository Layout
-
-```text
-aizen-samples/
-|-- README.md
-|-- LICENSE
-|-- images/
-|   `-- banner.png
-`-- dataset/
-    `-- <task-id>/
-        |-- task.toml
-        |-- instruction.md
-        |-- environment/
-        |-- solution/
-        `-- tests/
-```
+Each bundle's signed provenance carrier holds its screening roots, screening instant, and absolute expiry. Placement moves that carrier into the private derivation set, which this page never reads, so reconcile lists no root it cannot verify here.
 
 ## Reproduction
 
-A Harbor-compatible run follows the task-local manifest:
+Each bundle directory is a complete Harbor task: `task.toml` is the runner manifest, `instruction.md` the objective, `environment/` the sandbox image, and `tests/` the verifier. Point a Harbor runner at one bundle directory to reproduce it; `solution/` stays private.
 
-```bash
-cd dataset/<task-id>
+## Cite
 
-# Build or start the environment declared by task.toml.
+No publication exists yet. Cite the repository if you need to.
 
-# Give instruction.md to the agent and let it modify the workspace.
-
-# Run the verifier.
-bash tests/test.sh
+```bibtex
+@software{aizen,
+  title  = {aizen: a difficulty-measured task corpus and RL environment
+            for feature-level coding},
+  author = {{Ethara.AI}},
+  year   = {2026},
+  note   = {Not yet published. No signed pilot evidence at time of writing.}
+}
 ```
 
-`task.toml` is the source of truth for the environment, timeout, agent-visible files, and verifier
-command.
-
-## Relationship To Aizen
-
-Aizen is the parent project for feature-development coding environments. This samples repository is
-the public task-inspection surface for that work: it presents the bundle layout and verifier
-contract in the same Harbor-oriented form expected by downstream harnesses.
+Work this project builds on is cited under its own name. FeatureBench, Zhou et al.,
+arXiv:2602.10975, is the parent formulation and the source of the generator, and is
+MIT on both code and data. SWE-bench, Jimenez et al., is the code lineage. Attribution
+is a licence obligation and the aizen codename never substitutes for naming them.
 
 ## License
 
-Released under the **MIT License**. Individual task bundles may carry additional license and
-attribution obligations inherited from their source repositories, environments, and dependencies.
+MIT. See [LICENSE](LICENSE).
+
+Submodules and any datasets or task bundles produced through this project retain their
+own licences. Only permissively licensed substrate enters the corpus.
+
+## Contact
+
+- Organization: [Ethara.AI](https://github.com/Ethara-Ai)
+- Security and benchmark-integrity disclosure: `security@ethara.ai`, see
+  [SECURITY.md](SECURITY.md)
+- Conduct: `conduct@ethara.ai`, see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
