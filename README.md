@@ -90,3 +90,9 @@ own licences. Only permissively licensed substrate enters the corpus.
   [SECURITY.md](SECURITY.md)
 - Conduct: `conduct@ethara.ai`, see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+## Copyright
+
+Copyright (c) 2026 Green Rider Technology LLP (Ethara AI). All rights reserved.
